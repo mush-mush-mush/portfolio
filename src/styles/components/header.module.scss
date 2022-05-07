@@ -1,0 +1,125 @@
+@import "../variables";
+
+.header {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 8rem;
+  mix-blend-mode: difference;
+  filter: contrast(9);
+
+  &__logo {
+    font-size: 2rem;
+  }
+
+  &__toggler {
+    width: 5rem;
+    height: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    background-color: transparent;
+    border: none;
+
+    @media only screen and (min-width: $breakpoint-md) {
+      display: none;
+    }
+
+    & span {
+      display: block;
+      width: 75%;
+      height: 1px;
+      background-color: #fff;
+      transform-origin: center;
+      transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+      &:last-child {
+        margin-top: 10px;
+      }
+    }
+
+    &--active {
+      & span {
+        transform: rotate(45deg);
+
+        &:last-child {
+          margin-top: 0;
+          transform: rotate(-45deg);
+        }
+      }
+    }
+  }
+
+  &__nav {
+    display: flex;
+    font-size: 1.4rem;
+    list-style: none;
+
+    @media only screen and (max-width: $breakpoint-md) {
+      font-size: 3rem;
+      position: absolute;
+      right: -50%;
+      top: 8rem;
+      flex-direction: column;
+      align-items: flex-end;
+      transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+      &--open {
+        right: 0;
+        transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+      }
+    }
+
+    & li {
+      position: relative;
+      margin-right: 3rem;
+      transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+      @media only screen and (max-width: $breakpoint-md) {
+        margin-right: 0;
+        margin-bottom: 3rem;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(0, -50%);
+        width: 0px;
+        height: 0px;
+        background-color: #fff;
+        border-radius: 100%;
+
+        @media only screen and (max-width: $breakpoint-md) {
+          left: 0;
+          top: 50%;
+          transform: translate(-50%, 0);
+        }
+      }
+
+      &:hover::after {
+        width: 4px;
+        height: 4px;
+      }
+
+      &:hover {
+        opacity: 0.5;
+      }
+
+      & a {
+        padding: 1rem;
+      }
+    }
+  }
+}

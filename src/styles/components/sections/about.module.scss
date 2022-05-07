@@ -1,0 +1,37 @@
+@import "../../variables";
+
+.about {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: repeat(3, max-content);
+  gap: 8rem;
+  justify-items: start;
+  align-items: start;
+
+  @media only screen and (max-width: $breakpoint-md) {
+    grid-template-columns: 1fr;
+  }
+
+  &__title {
+    grid-column: 1 / 2;
+    grid-row: 1 / span 3;
+
+    @media only screen and (max-width: $breakpoint-md) {
+      grid-row: 1;
+    }
+  }
+
+  &__name {
+    display: block;
+    font-size: 6.4rem;
+    line-height: 1;
+    background-image: linear-gradient(
+      to right,
+      $color-primary,
+      $color-secondary
+    );
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+  }
+}
