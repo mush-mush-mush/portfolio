@@ -8,6 +8,7 @@ import Layout from "../components/Layout"
 import { motion } from "framer-motion"
 
 import * as styles from "../styles/pages/work-details.module.scss"
+import Helmet from "react-helmet"
 
 export default function workDetail({ data, location }) {
   const { html } = data.markdownRemark
@@ -19,6 +20,13 @@ export default function workDetail({ data, location }) {
 
   return (
     <Layout location={location}>
+      <Helmet>
+        <title>{title} | Made by Cello</title>
+        <meta
+          name="description"
+          content="Marcello Sebastian is a javascript developer who focuses on modern front end web development."
+        />
+      </Helmet>
       <motion.div
         className={styles.workDetails}
         initial={{ opacity: 0 }}

@@ -39,7 +39,7 @@ export default function Works() {
           ease: [0.6, 0.01, -0.05, 0.95],
         },
       }}
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.1 }}
     >
       <h2 className={"heading-underline " + styles.works__title}>
         Things i've built

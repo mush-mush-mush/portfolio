@@ -1,9 +1,16 @@
 import React from "react"
-import { motion } from "framer-motion"
+import { motion, useViewportScroll, useTransform } from "framer-motion"
 
 import * as styles from "../../styles/components/sections/contact.module.scss"
 
 export default function Contact() {
+  const { scrollYProgress } = useViewportScroll()
+
+  const buttonXPosition = useTransform(scrollYProgress, [0.8, 1], [-10, -90])
+
+  const bubbleYValue1 = useTransform(scrollYProgress, [0.8, 1], [-100, 0])
+  const bubbleYValue2 = useTransform(scrollYProgress, [0.8, 1], [100, 0])
+
   return (
     <motion.section
       className={styles.contact}
@@ -27,7 +34,12 @@ export default function Contact() {
       </div>
 
       <div className={styles.contact__hello}>
-        <a href="mailto:marcello.sebastian09@gmail.com">Say Hello!</a>
+        <motion.a
+          href="mailto:marcello.sebastian09@gmail.com"
+          style={{ x: buttonXPosition }}
+        >
+          Say Hello!
+        </motion.a>
         <hr />
       </div>
 
@@ -47,8 +59,14 @@ export default function Contact() {
       </div>
 
       <div className={styles.contact__background}>
-        <div className={styles.contact__backgroundObject1}></div>
-        <div className={styles.contact__backgroundObject2}></div>
+        <motion.div
+          className={styles.contact__backgroundObject1}
+          style={{ y: bubbleYValue1 }}
+        ></motion.div>
+        <motion.div
+          className={styles.contact__backgroundObject2}
+          style={{ y: bubbleYValue2 }}
+        ></motion.div>
       </div>
     </motion.section>
   )

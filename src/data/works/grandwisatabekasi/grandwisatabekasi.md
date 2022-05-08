@@ -13,4 +13,4 @@ featuredImg: "./grandwisatabekasi-featured.png"
 slug: grand-wisata-bekasi
 ---
 
-A fully responsive company profile website using Gatsby as static site generator.
+A responsive company profile website for Grand Wisata Bekasi using Gatsby as static site generator.

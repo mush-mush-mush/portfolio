@@ -13,4 +13,4 @@ featuredImg: "./mushiemush-featured.png"
 slug: mushiemush
 ---
 
-A progressive web app with native-like features such as installable, offline capability, etc. Built with implementing mobile-first approach and Test Driven Development. Develop as final project submission for Dicoding's "Menjadi Front-end Developer Expert" course.
+A web app with native-like features such as installable, offline capability, etc. Develop as final project submission for Dicoding's "Menjadi Front-end Developer Expert" course.

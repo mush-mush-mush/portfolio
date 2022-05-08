@@ -12,6 +12,7 @@
   min-height: 8rem;
   mix-blend-mode: difference;
   filter: contrast(9);
+  isolation: isolate;
 
   &__logo {
     font-size: 2rem;

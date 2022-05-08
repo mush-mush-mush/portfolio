@@ -7,6 +7,10 @@
   align-items: flex-start;
   justify-content: center;
 
+  & h1 {
+    line-height: 1.2;
+  }
+
   &__background {
     position: absolute;
     left: 0;
@@ -59,7 +63,7 @@
 
     &-object--3 {
       position: absolute;
-      left: 85%;
+      left: 80%;
       top: 60%;
       background-image: linear-gradient(
         to right,
