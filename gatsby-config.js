@@ -5,8 +5,15 @@
  */
 
 module.exports = {
-  /* Your site config here */
+  siteMetadata: {
+    title: "Made by Cello",
+    description:
+      "Hi, my name is Marcello Sebastian, a javascript developer who focuses on modern front end web development.",
+    siteUrl: "https://madebycello.netlify.app",
+    image: "/og.png",
+  },
   plugins: [
+    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
     `gatsby-transformer-remark`,
     `gatsby-plugin-image`,
