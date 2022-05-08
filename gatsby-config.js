@@ -11,6 +11,7 @@ module.exports = {
       "Hi, my name is Marcello Sebastian, a javascript developer who focuses on modern front end web development.",
     siteUrl: "https://madebycello.netlify.app",
     image: "/og.png",
+    logo: "/favicon.png",
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
