@@ -13,6 +13,7 @@ function errorPage({ location }) {
           name="description"
           content="Hi, my name is Marcello Sebastian, a javascript developer who focuses on modern front end web development."
         />
+        <link rel="icon" href="/favicon.png" />
 
         <meta property="og:url" content="https://madebycello.netlify.app/" />
         <meta property="og:type" content="website" />
