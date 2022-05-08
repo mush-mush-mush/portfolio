@@ -1,12 +1,23 @@
 import React from "react"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faGithub, faLinkedinIn } from "@fortawesome/free-brands-svg-icons"
+import { motion } from "framer-motion"
 
 import * as styles from "../../styles/components/sections/contact.module.scss"
 
 export default function Contact() {
   return (
-    <section className={styles.contact} id="contact">
+    <motion.section
+      className={styles.contact}
+      id="contact"
+      initial={{ opacity: 0 }}
+      whileInView={{
+        opacity: 1,
+        transition: {
+          duration: 1,
+          ease: [0.6, 0.01, -0.05, 0.95],
+        },
+      }}
+      viewport={{ once: true, amount: 0.3 }}
+    >
       <div className={styles.contact__heading}>
         <h2 className="heading-underline">Get in touch</h2>
         <p>
@@ -39,6 +50,6 @@ export default function Contact() {
         <div className={styles.contact__backgroundObject1}></div>
         <div className={styles.contact__backgroundObject2}></div>
       </div>
-    </section>
+    </motion.section>
   )
 }

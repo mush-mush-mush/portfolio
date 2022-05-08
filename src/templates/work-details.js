@@ -1,18 +1,15 @@
 import { faGithub } from "@fortawesome/free-brands-svg-icons"
-import {
-  faBoxOpen,
-  faCodePullRequest,
-  faExternalLink,
-} from "@fortawesome/free-solid-svg-icons"
+import { faExternalLink } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { graphql } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import React from "react"
 import Layout from "../components/Layout"
+import { motion } from "framer-motion"
 
 import * as styles from "../styles/pages/work-details.module.scss"
 
-export default function workDetail({ data }) {
+export default function workDetail({ data, location }) {
   const { html } = data.markdownRemark
   const { title, type, role, tools, date, github, live } =
     data.markdownRemark.frontmatter
@@ -21,8 +18,12 @@ export default function workDetail({ data }) {
   const dateOpt = { year: "numeric", month: "long" }
 
   return (
-    <Layout>
-      <div className={styles.workDetails}>
+    <Layout location={location}>
+      <motion.div
+        className={styles.workDetails}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+      >
         <figure>
           <GatsbyImage
             image={banner.childImageSharp.gatsbyImageData}
@@ -71,7 +72,7 @@ export default function workDetail({ data }) {
             </ul>
           </aside>
         </section>
-      </div>
+      </motion.div>
     </Layout>
   )
 }

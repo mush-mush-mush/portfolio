@@ -1,16 +1,29 @@
 import React from "react"
+import { motion } from "framer-motion"
 
 import * as styles from "../../styles/components/sections/about.module.scss"
 
 export default function About() {
   return (
-    <section className={styles.about} id="about">
+    <motion.section
+      className={styles.about}
+      id="about"
+      initial={{ opacity: 0 }}
+      whileInView={{
+        opacity: 1,
+        transition: {
+          duration: 1,
+          ease: [0.6, 0.01, -0.05, 0.95],
+        },
+      }}
+      viewport={{ once: true, amount: 0.3 }}
+    >
       <h2 className={"heading-underline " + styles.about__title}>About me</h2>
-      <p className={styles.about__subtitle}>
+      <p>
         Hi, my name is
         <span className={styles.about__name}>Marcello Sebastian</span>
       </p>
-      <p className={styles.about__content}>
+      <p>
         A <strong>javascript developer</strong> who focuses on{" "}
         <strong>modern front end web development</strong>. Passionate in
         bringing aesthetics and functionality together through front end
@@ -22,9 +35,9 @@ export default function About() {
         developer who is able not only to invent & innovate; but also share
         knowledge with others.
       </p>
-      <a href="/resume.pdf" className={"button " + styles.about__button}>
+      <a href="/resume.pdf" className="button">
         My Resume
       </a>
-    </section>
+    </motion.section>
   )
 }

@@ -9,7 +9,7 @@ role: Design & Development
 date: 1626278400000
 github: null
 live: "https://www.grandwisataproperty.com/"
-featuredImg: "./mushiemovie-featured.png"
+featuredImg: "./grandwisatabekasi-featured.png"
 slug: grand-wisata-bekasi
 ---
 
