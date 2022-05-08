@@ -27,17 +27,5 @@ module.exports = {
         path: `${__dirname}/src/data/works`,
       },
     },
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: "Made by Cello",
-        short_name: "MadebyCello",
-        start_url: "/",
-        background_color: "#00000",
-        theme_color: "#00000",
-        display: "standalone",
-        icon: "/favicon.png",
-      },
-    },
   ],
 }
