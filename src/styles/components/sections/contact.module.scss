@@ -42,10 +42,6 @@
       border-radius: 100px;
       cursor: pointer;
       transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-
-      &:hover {
-        transform: scale(1.05);
-      }
     }
 
     & hr {

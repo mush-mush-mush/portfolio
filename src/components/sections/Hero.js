@@ -5,7 +5,7 @@ import * as styles from "../../styles/components/sections/hero.module.scss"
 const titleVariants = {
   animate: {
     transition: {
-      staggerChildren: 0.5,
+      staggerChildren: 0.6,
     },
   },
 }
@@ -17,7 +17,7 @@ const titleAnimation = {
   animate: {
     opacity: 1,
     transition: {
-      duration: 1,
+      duration: 2,
       ease: [0.6, 0.01, -0.05, 0.95],
     },
   },
