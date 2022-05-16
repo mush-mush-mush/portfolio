@@ -37,6 +37,8 @@ export default function Contact() {
         <motion.a
           href="mailto:marcello.sebastian09@gmail.com"
           style={{ x: buttonXPosition }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 1.1 }}
         >
           Say Hello!
         </motion.a>

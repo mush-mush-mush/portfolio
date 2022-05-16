@@ -18,7 +18,6 @@ export default function About() {
       }}
       viewport={{ once: true, amount: 0.3 }}
     >
-      <h2 className={"heading-underline " + styles.about__title}>About me</h2>
       <p>
         Hi, my name is
         <span className={styles.about__name}>Marcello Sebastian</span>

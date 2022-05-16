@@ -17,6 +17,7 @@ export default function Home({ location }) {
           name="description"
           content="Hi, my name is Marcello Sebastian, a javascript developer who focuses on modern front end web development."
         />
+        <link rel="icon" type="image/x-icon" href="/favicon.png"></link>
 
         <meta property="og:url" content="https://madebycello.netlify.app/" />
         <meta property="og:type" content="website" />
@@ -46,17 +47,10 @@ export default function Home({ location }) {
           content="https://madebycello.netlify.app/og.png"
         />
       </Helmet>
-
-      <motion.main
-        className="wrapper"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-      >
-        <Hero />
-        <About />
-        <Works />
-        <Contact />
-      </motion.main>
+      <Hero />
+      <About />
+      <Works />
+      <Contact />
     </Layout>
   )
 }

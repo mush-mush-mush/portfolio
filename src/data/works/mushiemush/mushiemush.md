@@ -4,7 +4,7 @@ type: PWA
 tools:
   - Javascript
   - Service Worker
-  - indexDB
+  - indexedDB
 role: Design & Development
 date: 1634227200000
 github: "https://github.com/mush-mush-mush/dfewde-02"

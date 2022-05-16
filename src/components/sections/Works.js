@@ -1,9 +1,10 @@
 import { graphql, Link, useStaticQuery } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import React from "react"
-import { motion } from "framer-motion"
+import { motion, useViewportScroll, useTransform } from "framer-motion"
 
 import * as styles from "../../styles/components/sections/works.module.scss"
+import { useMediaQuery } from "../../hooks/useMediaQuery"
 
 export default function Works() {
   const data = useStaticQuery(graphql`
@@ -16,16 +17,31 @@ export default function Works() {
             title
             featuredImg {
               childImageSharp {
-                gatsbyImageData(layout: CONSTRAINED)
+                fluid {
+                  src
+                }
               }
             }
             type
-            slug
+            tools
+            live
+            github
           }
         }
       }
     }
   `)
+
+  const { scrollYProgress } = useViewportScroll()
+
+  const cardParallax = useTransform(scrollYProgress, [0, 1], [-300, 600])
+
+  const imgParallax2 = useTransform(
+    scrollYProgress,
+    value => -65 + value * 30 + "%"
+  )
+
+  const isDesktop = useMediaQuery("(min-width: 768px)")
 
   return (
     <motion.section
@@ -45,25 +61,43 @@ export default function Works() {
         Things i've built
       </h2>
       <div className={styles.works__container}>
-        {data.works.nodes.map(work => (
-          <Link
-            to={"/works/" + work.frontmatter.slug}
+        {data.works.nodes.map((work, index) => (
+          <motion.div
             className={styles.works__card}
-            key={work.frontmatter.slug}
+            key={work.frontmatter.title}
+            style={index % 2 != 0 && isDesktop ? { y: cardParallax } : ""}
           >
             <figure>
-              <GatsbyImage
+              {/* <GatsbyImage
                 image={
                   work.frontmatter.featuredImg.childImageSharp.gatsbyImageData
                 }
                 alt={work.frontmatter.slug}
-              ></GatsbyImage>
+              ></GatsbyImage> */}
+              <motion.img
+                src={work.frontmatter.featuredImg.childImageSharp.fluid.src}
+                alt={work.frontmatter.title}
+                style={{ y: imgParallax2 }}
+                whileHover={{ scale: 1.1 }}
+              ></motion.img>
+              <div className={styles.works__cardActions}>
+                <a href={work.frontmatter.live} className="button--dark">
+                  View Site
+                </a>
+                {work.frontmatter.github && (
+                  <a href={work.frontmatter.github} className="button--dark">
+                    View Code
+                  </a>
+                )}
+              </div>
             </figure>
             <div className={styles.works__cardBody}>
               <p>{work.frontmatter.type}</p>
               <h3>{work.frontmatter.title}</h3>
+              <hr />
+              <span>{work.frontmatter.tools.join(", ")}</span>
             </div>
-          </Link>
+          </motion.div>
         ))}
       </div>
       <a

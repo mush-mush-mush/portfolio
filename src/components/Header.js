@@ -4,16 +4,28 @@ import { motion } from "framer-motion"
 
 import * as styles from "../styles/components/header.module.scss"
 
-const navVariants = {
+const headerVariants = {
   initial: {
-    y: -100,
-    x: "-50%",
+    opacity: 0,
   },
   animate: {
-    y: 0,
-    x: "-50%",
+    opacity: 1,
     transition: {
       duration: 0.5,
+      ease: [0.6, 0.01, -0.05, 0.95],
+    },
+  },
+}
+
+const navVariants = {
+  initial: {
+    x: "150%",
+  },
+  animate: {
+    x: 0,
+    transition: {
+      duration: 1,
+      delay: 0.5,
       ease: [0.6, 0.01, -0.05, 0.95],
     },
   },
@@ -24,8 +36,8 @@ export default function Header() {
 
   return (
     <motion.nav
-      className={"wrapper " + styles.header}
-      variants={navVariants}
+      className={styles.header}
+      variants={headerVariants}
       initial="initial"
       animate="animate"
     >

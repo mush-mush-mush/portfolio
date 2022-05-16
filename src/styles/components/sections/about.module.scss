@@ -2,9 +2,9 @@
 
 .about {
   display: grid;
-  grid-template-columns: 1fr 2fr;
   grid-template-rows: repeat(3, max-content);
   gap: 8rem;
+  align-content: center;
   justify-items: start;
   align-items: start;
 

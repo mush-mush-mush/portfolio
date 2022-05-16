@@ -43,6 +43,18 @@ const containerAnimation = {
   },
 }
 
+const backgroundAnimation = {
+  animate: {
+    y: "-100vh",
+    transition: {
+      type: "tween",
+      duration: 2,
+      delay: 0.9,
+      ease: [0.6, 0.01, -0.05, 0.95],
+    },
+  },
+}
+
 function Loader({ onComplete }) {
   const [isComplete, setIsComplete] = useState(false)
 
@@ -65,6 +77,11 @@ function Loader({ onComplete }) {
           </motion.span>
         ))}
       </motion.h1>
+      <motion.div
+        className={styles.loader__background}
+        variants={backgroundAnimation}
+        animate={isComplete && "animate"}
+      ></motion.div>
     </motion.div>
   )
 }

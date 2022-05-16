@@ -26,10 +26,10 @@ h2 {
 }
 
 h1 {
-  font-size: 7.2rem;
+  font-size: 6.4rem;
 
   @media only screen and (max-width: $breakpoint-md) {
-    font-size: 6.4rem;
+    font-size: 5.8rem;
   }
 }
 
@@ -53,8 +53,8 @@ p {
 }
 
 strong {
-  font-weight: 300;
-  color: $color-primary;
+  font-weight: 700;
+  color: #fff;
 }
 
 .heading-underline {
@@ -112,5 +112,38 @@ strong {
     & svg {
       margin-right: 0;
     }
+  }
+
+  &--dark {
+    @extend %button;
+    min-width: 22rem;
+    padding: 1.5rem 3rem;
+    background-color: rgba($color: #000000, $alpha: 0.8);
+
+    &:hover {
+      border: 1px solid #fff;
+      background-color: rgba($color: #000000, $alpha: 1);
+    }
+  }
+}
+
+.cursor {
+  position: absolute;
+  z-index: 1000;
+
+  background-color: #fff;
+  border: 1px solid rgba($color: #fff, $alpha: 0.3);
+  border-radius: 100%;
+  mix-blend-mode: exclusion;
+  pointer-events: none;
+
+  &--lg {
+    width: 20px;
+    height: 20px;
+  }
+
+  &--sm {
+    width: 10px;
+    height: 10px;
   }
 }

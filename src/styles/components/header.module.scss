@@ -1,21 +1,49 @@
 @import "../variables";
 
 .header {
-  position: fixed;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1000;
+  position: sticky;
+  top: 50%;
+  transform: translate(0, -50%);
+
+  width: max-content;
+  height: 50vh;
+  padding-right: 4rem;
+  border-right: 1px solid rgba($color: #fff, $alpha: 0.3);
 
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  min-height: 8rem;
-  mix-blend-mode: difference;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+
+  mix-blend-mode: exclusion;
   filter: contrast(9);
   isolation: isolate;
 
+  @media only screen and (max-width: $breakpoint-md) {
+    position: fixed;
+    z-index: 1000;
+    transform: translate(-50%, 0);
+    top: 0;
+    left: 50%;
+    width: 83.3%;
+    padding-right: 0;
+    border-right: none;
+
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    align-items: center;
+    height: 8rem;
+  }
+
   &__logo {
-    font-size: 2rem;
+    font-size: 3.5rem;
+    margin-bottom: 6rem;
+
+    @media only screen and (max-width: $breakpoint-md) {
+      font-size: 2rem;
+      margin-bottom: 0;
+    }
   }
 
   &__toggler {
@@ -59,7 +87,9 @@
 
   &__nav {
     display: flex;
-    font-size: 1.4rem;
+    flex-direction: column;
+    align-items: flex-end;
+    font-size: 1.8rem;
     list-style: none;
 
     @media only screen and (max-width: $breakpoint-md) {
@@ -72,6 +102,9 @@
       transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 
       &--open {
+        transform: translateZ(0);
+        backface-visibility: hidden;
+        will-change: transform;
         right: 0;
         transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
       }
@@ -79,47 +112,37 @@
 
     & li {
       position: relative;
-      margin-right: 3rem;
       transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-
-      @media only screen and (max-width: $breakpoint-md) {
-        margin-right: 0;
-        margin-bottom: 3rem;
-      }
-
-      &:last-child {
-        margin-right: 0;
-      }
+      margin-bottom: 1.5rem;
+      opacity: 0.8;
 
       &::after {
         content: "";
         position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translate(0, -50%);
-        width: 0px;
-        height: 0px;
-        background-color: #fff;
-        border-radius: 100%;
-
-        @media only screen and (max-width: $breakpoint-md) {
-          left: 0;
-          top: 50%;
-          transform: translate(-50%, 0);
-        }
+        z-index: -1;
+        bottom: 1rem;
+        right: 0;
+        width: 0;
+        height: 8px;
+        background-color: rgba($color: $color-primary, $alpha: 0.3);
+        transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
       }
 
       &:hover::after {
-        width: 4px;
-        height: 4px;
+        width: 110%;
       }
 
       &:hover {
-        opacity: 0.5;
+        opacity: 1;
+      }
+
+      &:hover a {
+        margin-right: 1rem;
       }
 
       & a {
-        padding: 1rem;
+        padding: 1rem 0 1rem 1rem;
+        transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
       }
     }
   }
