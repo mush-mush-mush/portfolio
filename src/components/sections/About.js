@@ -25,16 +25,18 @@ export default function About() {
       <p>
         A <strong>javascript developer</strong> who focuses on{" "}
         <strong>modern front end web development</strong>. Passionate in
-        bringing aesthetics and functionality together through front end
-        development. This includes strong interest in{" "}
-        <strong>UI/UX design</strong>,{" "}
+        building beautiful, intuitive and functional user interfaces. This
+        includes strong interest in <strong>UI/UX design</strong>,{" "}
         <strong>SPA (Single Page Application)</strong>,{" "}
         <strong>PWA (Progressisve Web App)</strong>, and{" "}
         <strong>serverless technology</strong>. Motivated to be an inspiring
         developer who is able not only to invent & innovate; but also share
         knowledge with others.
       </p>
-      <a href="/resume.pdf" className="button">
+      <a
+        href="https://drive.google.com/file/d/17yYigXLwflZhlvas5tyn22f-i1vJ9UQr/view?usp=sharing"
+        className="button"
+      >
         My Resume
       </a>
     </motion.section>
