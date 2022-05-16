@@ -9,15 +9,21 @@
   height: 50vh;
   padding-right: 4rem;
   border-right: 1px solid rgba($color: #fff, $alpha: 0.3);
+  overflow: hidden;
 
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-end;
+  align-items: center;
 
   mix-blend-mode: exclusion;
   filter: contrast(9);
   isolation: isolate;
+
+  & div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+  }
 
   @media only screen and (max-width: $breakpoint-md) {
     position: fixed;
@@ -26,14 +32,18 @@
     top: 0;
     left: 50%;
     width: 83.3%;
+    height: 8rem;
     padding-right: 0;
     border-right: none;
+    overflow: visible;
 
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    align-items: center;
-    height: 8rem;
+    & div {
+      width: 100%;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      align-items: center;
+    }
   }
 
   &__logo {

@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react"
+import { motion } from "framer-motion"
 import Footer from "./Footer"
 import Header from "./Header"
 
 import "../styles/main.scss"
 import Loader from "./Loader"
-import Helmet from "react-helmet"
-import { motion } from "framer-motion"
 
 export default function Layout({ children, location }) {
   const isHome = location.pathname === "/" && location.hash === ""
@@ -31,6 +30,7 @@ export default function Layout({ children, location }) {
     }
   }
 
+  console.log(mousePosition)
   return (
     <motion.div
       className="layout"
@@ -38,9 +38,10 @@ export default function Layout({ children, location }) {
     >
       <motion.div
         className="cursor cursor--lg"
+        initial={{ x: -20, y: -20 }}
         animate={{
-          x: mousePosition.x - 10,
-          y: mousePosition.y - 10,
+          x: mousePosition.x,
+          y: mousePosition.y,
           transition: {
             duration: 0.05,
             ease: [0.6, 0.01, -0.05, 0.95],
@@ -50,9 +51,13 @@ export default function Layout({ children, location }) {
       ></motion.div>
       <motion.div
         className="cursor cursor--sm"
+        initial={{ x: -10, y: -10 }}
         animate={{
-          x: mousePosition.x - 5,
-          y: mousePosition.y - 5,
+          x: mousePosition.x,
+          y: mousePosition.y,
+          transition: {
+            type: "spring",
+          },
         }}
       ></motion.div>
       {isLoading && isHome ? (

@@ -1,5 +1,4 @@
-import { graphql, Link, useStaticQuery } from "gatsby"
-import { GatsbyImage } from "gatsby-plugin-image"
+import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
 import { motion, useViewportScroll, useTransform } from "framer-motion"
 
@@ -65,15 +64,9 @@ export default function Works() {
           <motion.div
             className={styles.works__card}
             key={work.frontmatter.title}
-            style={index % 2 != 0 && isDesktop ? { y: cardParallax } : ""}
+            style={index % 2 !== 0 && isDesktop ? { y: cardParallax } : ""}
           >
             <figure>
-              {/* <GatsbyImage
-                image={
-                  work.frontmatter.featuredImg.childImageSharp.gatsbyImageData
-                }
-                alt={work.frontmatter.slug}
-              ></GatsbyImage> */}
               <motion.img
                 src={work.frontmatter.featuredImg.childImageSharp.fluid.src}
                 alt={work.frontmatter.title}
