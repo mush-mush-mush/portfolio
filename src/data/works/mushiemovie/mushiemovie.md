@@ -11,6 +11,7 @@ github: "https://github.com/mush-mush-mush/mushiemovie"
 live: "https://mushiemovie.netlify.app/"
 featuredImg: "./mushiemovie-featured.png"
 slug: mushiemovie
+desc: "A simple movie app using TMDb API"
 ---
 
-A web app that interacts with TMDb API showing the information related to films and televisions series, including casts, production crews and personal biographies, plot overview and ratings.
+A simple movie app using TMDb API

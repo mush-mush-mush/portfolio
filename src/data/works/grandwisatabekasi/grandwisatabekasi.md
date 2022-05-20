@@ -11,6 +11,7 @@ github: null
 live: "https://www.grandwisataproperty.com/"
 featuredImg: "./grandwisatabekasi-featured.png"
 slug: grand-wisata-bekasi
+desc: "A fully responsive real estate company website"
 ---
 
-A responsive company profile website for Grand Wisata Bekasi using Gatsby as static site generator.
+A fully responsive real estate company website.

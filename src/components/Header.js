@@ -31,8 +31,14 @@ const navVariants = {
   },
 }
 
-export default function Header() {
+export default function Header({ setCursorLinkHover }) {
   const [toggleNavbar, setToggleNavbar] = useState(false)
+
+  const navs = [
+    { menu: "About", link: "/#about" },
+    { menu: "Works", link: "/#works" },
+    { menu: "Contact", link: "/#contact" },
+  ]
 
   return (
     <motion.nav
@@ -59,21 +65,16 @@ export default function Header() {
             toggleNavbar ? styles.header__navOpen : ""
           }`}
         >
-          <li>
-            <Link to="/#about" onClick={() => setToggleNavbar(false)}>
-              About
-            </Link>
-          </li>
-          <li>
-            <Link to="/#works" onClick={() => setToggleNavbar(false)}>
-              Works
-            </Link>
-          </li>
-          <li>
-            <Link to="/#contact" onClick={() => setToggleNavbar(false)}>
-              Contact
-            </Link>
-          </li>
+          {navs.map(nav => (
+            <li
+              onMouseOver={e => setCursorLinkHover(true)}
+              onMouseLeave={e => setCursorLinkHover(false)}
+            >
+              <Link to={nav.link} onClick={() => setToggleNavbar(false)}>
+                {nav.menu}
+              </Link>
+            </li>
+          ))}
         </ul>
       </motion.div>
     </motion.nav>

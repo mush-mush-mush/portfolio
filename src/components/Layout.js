@@ -11,6 +11,7 @@ export default function Layout({ children, location }) {
   const isHome = location.pathname === "/" && location.hash === ""
   const [isLoading, setIsLoading] = useState(true)
   const [mousePosition, setMousePosition] = useState({})
+  const [cursorLinkHover, setCursorLinkHover] = useState(false)
 
   useEffect(() => {
     if (location.hash) {
@@ -35,6 +36,7 @@ export default function Layout({ children, location }) {
     <motion.div
       className="layout"
       onMouseMove={e => setMousePosition(getCursorCoordinates(e))}
+      onScrollCapture={e => console.log(e)}
     >
       <Helmet>
         <title>Made by Cello</title>
@@ -78,10 +80,12 @@ export default function Layout({ children, location }) {
         animate={{
           x: mousePosition.x,
           y: mousePosition.y,
+          scale: cursorLinkHover ? 3 : 1,
+          backgroundColor: cursorLinkHover ? "transparent" : "",
           transition: {
-            duration: 0.05,
+            damping: 18,
             ease: [0.6, 0.01, -0.05, 0.95],
-            type: "tween",
+            type: "spring",
           },
         }}
       ></motion.div>
@@ -91,6 +95,8 @@ export default function Layout({ children, location }) {
         animate={{
           x: mousePosition.x,
           y: mousePosition.y,
+          scale: cursorLinkHover ? 0 : 1,
+          backgroundColor: cursorLinkHover ? "transparent" : "",
           transition: {
             type: "spring",
           },
@@ -100,7 +106,7 @@ export default function Layout({ children, location }) {
         <Loader onComplete={() => setIsLoading(false)} />
       ) : (
         <div className="layout__container wrapper">
-          <Header />
+          <Header setCursorLinkHover={setCursorLinkHover} />
           <main className="layout__content ">
             {children}
             <Footer />

@@ -25,6 +25,7 @@ export default function Works() {
             tools
             live
             github
+            desc
           }
         }
       }
@@ -40,7 +41,11 @@ export default function Works() {
     value => -65 + value * 30 + "%"
   )
 
-  const isDesktop = useMediaQuery("(min-width: 768px)")
+  const isDesktop = useMediaQuery(
+    "(min-width: 1200px) and (orientation: landscape)"
+  )
+
+  console.log(scrollYProgress)
 
   return (
     <motion.section
@@ -74,19 +79,27 @@ export default function Works() {
                 whileHover={{ scale: 1.1 }}
               ></motion.img>
               <div className={styles.works__cardActions}>
-                <a href={work.frontmatter.live} className="button--dark">
+                <a
+                  href={work.frontmatter.live}
+                  target="_blank"
+                  className="button button--dark"
+                >
                   View Site
                 </a>
                 {work.frontmatter.github && (
-                  <a href={work.frontmatter.github} className="button--dark">
+                  <a
+                    href={work.frontmatter.github}
+                    target="_blank"
+                    className="button button--dark"
+                  >
                     View Code
                   </a>
                 )}
               </div>
             </figure>
             <div className={styles.works__cardBody}>
-              <p>{work.frontmatter.type}</p>
               <h3>{work.frontmatter.title}</h3>
+              <p>{work.frontmatter.desc}</p>
               <hr />
               <span>{work.frontmatter.tools.join(", ")}</span>
             </div>
