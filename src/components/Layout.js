@@ -6,12 +6,12 @@ import Header from "./Header"
 
 import "../styles/main.scss"
 import Loader from "./Loader"
+import Cursor from "./Cursor"
+import CursorContextProvider from "../contexts/cursorContext"
 
 export default function Layout({ children, location }) {
   const isHome = location.pathname === "/" && location.hash === ""
   const [isLoading, setIsLoading] = useState(true)
-  const [mousePosition, setMousePosition] = useState({})
-  const [cursorLinkHover, setCursorLinkHover] = useState(false)
 
   useEffect(() => {
     if (location.hash) {
@@ -25,19 +25,8 @@ export default function Layout({ children, location }) {
     }
   }, [location])
 
-  const getCursorCoordinates = e => {
-    return {
-      x: e.pageX,
-      y: e.pageY,
-    }
-  }
-
   return (
-    <motion.div
-      className="layout"
-      onMouseMove={e => setMousePosition(getCursorCoordinates(e))}
-      onScrollCapture={e => console.log(e)}
-    >
+    <motion.div className="layout">
       <Helmet>
         <title>Made by Cello</title>
         <meta
@@ -74,45 +63,22 @@ export default function Layout({ children, location }) {
           content="https://madebycello.netlify.app/og.png"
         />
       </Helmet>
-      <motion.div
-        className="cursor cursor--lg"
-        initial={{ x: -20, y: -20 }}
-        animate={{
-          x: mousePosition.x,
-          y: mousePosition.y,
-          scale: cursorLinkHover ? 3 : 1,
-          backgroundColor: cursorLinkHover ? "transparent" : "",
-          transition: {
-            damping: 18,
-            ease: [0.6, 0.01, -0.05, 0.95],
-            type: "spring",
-          },
-        }}
-      ></motion.div>
-      <motion.div
-        className="cursor cursor--sm"
-        initial={{ x: -10, y: -10 }}
-        animate={{
-          x: mousePosition.x,
-          y: mousePosition.y,
-          scale: cursorLinkHover ? 0 : 1,
-          backgroundColor: cursorLinkHover ? "transparent" : "",
-          transition: {
-            type: "spring",
-          },
-        }}
-      ></motion.div>
-      {isLoading && isHome ? (
-        <Loader onComplete={() => setIsLoading(false)} />
-      ) : (
-        <div className="layout__container wrapper">
-          <Header setCursorLinkHover={setCursorLinkHover} />
-          <main className="layout__content ">
-            {children}
-            <Footer />
-          </main>
-        </div>
-      )}
+
+      <CursorContextProvider>
+        <Cursor />
+
+        {isLoading && isHome ? (
+          <Loader onComplete={() => setIsLoading(false)} />
+        ) : (
+          <div className="layout__container wrapper">
+            <Header />
+            <main className="layout__content ">
+              {children}
+              <Footer />
+            </main>
+          </div>
+        )}
+      </CursorContextProvider>
     </motion.div>
   )
 }

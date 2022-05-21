@@ -1,15 +1,39 @@
-import React from "react"
+import React, { useContext } from "react"
 import { motion, useViewportScroll, useTransform } from "framer-motion"
+import { cursorContext } from "../../contexts/cursorContext"
 
 import * as styles from "../../styles/components/sections/contact.module.scss"
 
 export default function Contact() {
+  const { cursorChangeHandler } = useContext(cursorContext)
   const { scrollYProgress } = useViewportScroll()
 
   const buttonXPosition = useTransform(scrollYProgress, [0.8, 1], [-10, -90])
 
   const bubbleYValue1 = useTransform(scrollYProgress, [0.8, 1], [-100, 0])
   const bubbleYValue2 = useTransform(scrollYProgress, [0.8, 1], [100, 0])
+
+  const contacts = [
+    {
+      label: "marcello.sebastian09@gmail.com",
+      link: "mailto:marcello.sebastian09@gmail.com",
+    },
+    {
+      label: "+886 909 568 271",
+      link: "tel:+886909568271",
+    },
+  ]
+
+  const socials = [
+    {
+      label: "LinkedIn",
+      link: "https://www.linkedin.com/in/marcello-sebastian/",
+    },
+    {
+      label: "GitHub",
+      link: "https://github.com/mush-mush-mush",
+    },
+  ]
 
   return (
     <motion.section
@@ -48,15 +72,27 @@ export default function Contact() {
       <div className={styles.contact__details}>
         <div>
           <h4>Contact details</h4>
-          <a href="mailto:marcello.sebastian09@gmail.com">
-            marcello.sebastian09@gmail.com
-          </a>
-          <a href="tel:+886909568271">+886 909 568 271</a>
+          {contacts.map(contact => (
+            <a
+              href={contact.link}
+              onMouseEnter={() => cursorChangeHandler("cursor--on-link-over")}
+              onMouseLeave={() => cursorChangeHandler("")}
+            >
+              {contact.label}
+            </a>
+          ))}
         </div>
         <div>
           <h4>Socials</h4>
-          <a href="https://www.linkedin.com/in/marcello-sebastian/">LinkedIn</a>
-          <a href="https://github.com/mush-mush-mush">GitHub</a>
+          {socials.map(social => (
+            <a
+              href={social.link}
+              onMouseEnter={() => cursorChangeHandler("cursor--on-link-over")}
+              onMouseLeave={() => cursorChangeHandler("")}
+            >
+              {social.label}
+            </a>
+          ))}
         </div>
       </div>
 

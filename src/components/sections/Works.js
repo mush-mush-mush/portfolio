@@ -45,8 +45,6 @@ export default function Works() {
     "(min-width: 1200px) and (orientation: landscape)"
   )
 
-  console.log(scrollYProgress)
-
   return (
     <motion.section
       className={styles.works}
@@ -82,6 +80,7 @@ export default function Works() {
                 <a
                   href={work.frontmatter.live}
                   target="_blank"
+                  rel="noreferrer"
                   className="button button--dark"
                 >
                   View Site
@@ -90,6 +89,7 @@ export default function Works() {
                   <a
                     href={work.frontmatter.github}
                     target="_blank"
+                    rel="noreferrer"
                     className="button button--dark"
                   >
                     View Code

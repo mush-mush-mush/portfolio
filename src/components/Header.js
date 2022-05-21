@@ -1,6 +1,7 @@
 import { Link } from "gatsby"
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import { motion } from "framer-motion"
+import { cursorContext } from "../contexts/cursorContext"
 
 import * as styles from "../styles/components/header.module.scss"
 
@@ -31,7 +32,8 @@ const navVariants = {
   },
 }
 
-export default function Header({ setCursorLinkHover }) {
+export default function Header() {
+  const { cursorChangeHandler } = useContext(cursorContext)
   const [toggleNavbar, setToggleNavbar] = useState(false)
 
   const navs = [
@@ -66,11 +68,13 @@ export default function Header({ setCursorLinkHover }) {
           }`}
         >
           {navs.map(nav => (
-            <li
-              onMouseOver={e => setCursorLinkHover(true)}
-              onMouseLeave={e => setCursorLinkHover(false)}
-            >
-              <Link to={nav.link} onClick={() => setToggleNavbar(false)}>
+            <li>
+              <Link
+                to={nav.link}
+                onClick={() => setToggleNavbar(false)}
+                onMouseEnter={() => cursorChangeHandler("cursor--on-link-over")}
+                onMouseLeave={() => cursorChangeHandler("")}
+              >
                 {nav.menu}
               </Link>
             </li>

@@ -124,32 +124,3 @@ strong {
     }
   }
 }
-
-.cursor {
-  position: absolute;
-  z-index: 1000;
-
-  background-color: #fff;
-  border: 1px solid rgba($color: #fff, $alpha: 0.3);
-  border-radius: 100%;
-  mix-blend-mode: exclusion;
-  pointer-events: none;
-
-  @media only screen and (max-width: $breakpoint-md) {
-    display: none;
-  }
-
-  &--lg {
-    width: 20px;
-    height: 20px;
-    left: -10px;
-    top: -10px;
-  }
-
-  &--sm {
-    width: 10px;
-    height: 10px;
-    left: -5px;
-    top: -5px;
-  }
-}
